@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Калькулятор";
+}
+
+<head>
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8">
+</head>
+
+<form method="post"  asp-action="Submit">
+    <p><br /></p>
+    <p><input required placeholder="Введите выражение: " name="txtEvaluate"></p>
+    <p><input type="submit" value="Рассчитать!"></p>
+    <p></p>
+    <p> История: </p>
+    @(ViewBag.data)
+</form>
