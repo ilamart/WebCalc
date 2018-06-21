@@ -52,7 +52,7 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPost]
-        public void Submit(string txtEvaluate)
+        public IActionResult Submit(string txtEvaluate)
         {
             StringCalc once = new StringCalc();
             WriteLog(txtEvaluate);
