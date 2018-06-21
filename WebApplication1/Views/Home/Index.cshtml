@@ -12,5 +12,29 @@
     <p><input type="submit" value="Рассчитать!"></p>
     <p></p>
     <p> История: </p>
-    @(ViewBag.data)
+    <table border="1" cellpadding="5" style="border-collapse: collapse;">
+        @{
+            int x = 0;
+        }
+        @try
+         {
+            @foreach (var itemLog in Model)
+            {
+                @if (x % 2 == 0)
+                 {
+                    @: <tr><th>@(itemLog)</th><th> = </th><th>
+                 }
+                 else
+                 {
+                    @(itemLog)@:</th></tr>
+                 }
+                 x++;
+             }
+         }
+        catch (Exception ex)
+         {
+            <p>@ex;</p>
+            @: <tr><th>История пуста!</th></tr>
+         }
+    </table>
 </form>
