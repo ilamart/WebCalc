@@ -43,8 +43,7 @@ namespace WebApplication1.Controllers
 
         public ViewResult Index()
         {
-            ViewBag.data = GetFormAnswer();
-            return View();
+            return View(ReadLog());
         }
 
         public IActionResult Error()
@@ -59,37 +58,8 @@ namespace WebApplication1.Controllers
             WriteLog(txtEvaluate);
             string text = once.DoCalculation(txtEvaluate).ToString();
             WriteLog(text);
-            View("Index");
-        }
-
-        public string GetFormAnswer()
-        {
-            
-            var log = ReadLog();
-            var text = new StringBuilder();
-            text.Append("<table>");
-            int i = 0;
-            foreach (var itemLog in log)
-            {
-                if (i%2 != 1)
-                {
-                    text.Append("<tr><th>");
-                    text.Append(itemLog);
-                    text.Append("</th><th>");
-                    i++;
-                    continue;
-                }
-                else
-                {
-                    text.Append(itemLog);
-                    text.Append("</th>");
-                    text.Append("</tr>");
-                    i++;
-                    continue;
-                }
-            }
-            text.Append("</table>");
-            return text.ToString();
+            Index();
+            return View("Index");
         }
     }
 }
